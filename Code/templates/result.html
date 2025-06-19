@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detection Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f0f4f8;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-image: url("{{url_for('static', filename='images/av.png')}}"); /* Replace 'background.jpg' with your image path */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Keeps the image fixed while scrolling */
+            color: rgb(241, 48, 0, 0.8);
+        }
+
+        h1 {
+            color: rgba(255, 34, 5, 0.8);
+            margin-top: 100px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-style: italic;
+            font-weight: 800;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-evenly; /* Adjust space between cards */
+            max-width: 1200px;
+            padding: 20px;
+        }
+
+        .card {
+            /* background: #fff; */
+            box-shadow: 0 4px 8px rgb(241, 48, 0, 0.8);;
+            border-radius: 10px;
+            overflow: hidden;
+            flex: 1 1 calc(45% - 20px); /* 45% width minus the gap */
+            max-width: calc(45% - 20px); /* Ensure cards are side by side */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card h3 {
+            color: white;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-style: italic;
+            font-weight: 800;
+        }
+
+        video, img {
+            max-width: 100%;
+            height: 300px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .back-button {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .back-button a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color:rgb(241, 48, 0, 0.8);
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            color: white;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-style: italic;
+            font-weight: 800;
+        }
+
+        .back-button a:hover {
+            background-color: rgb(241, 48, 0, 0.8);
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                flex: 1 1 100%; /* Stack cards vertically on smaller screens */
+                max-width: 100%; /* Ensure full width for smaller screens */
+            }
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* background-color: rgba(0, 0, 0, 0.7); */
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        .navbar h2 {
+            margin-left: 30px;
+            color:rgb(241, 48, 0, 0.8);
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-style: italic;
+        }
+        .navbar .nav-buttons {
+            display: flex;
+            gap: 15px;
+            margin-right: 50px;
+        }
+        .nav-button {
+            padding: 20px 15px;
+            font-size: 20px;
+            color: white;
+            /* background-color: rgba(241, 48, 0, 0.8); */
+            text-decoration: none;
+            border-radius: 5px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            transition: background-color 0.3s ease;
+        }
+        span {
+            color: aliceblue;   
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h2>Safety</h2>
+        <div class="nav-buttons">
+            <a href="/" class="nav-button">Home</a>
+            <a href="/about" class="nav-button">About</a>
+
+        </div>
+    </div>
+
+    <h1>Safety Helmet <span>Detection</span></h1>
+    <div class="container">
+       
+        {% if original_file %}
+        <div class="card">
+            <h3>Original Image</h3>
+            {% if original_file.endswith(('mp4', 'avi', 'mov', 'mkv')) %}
+                <video controls>
+                    <source src="{{ url_for('uploaded_file', filename=original_file) }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            {% else %}
+                <img src="{{ url_for('uploaded_file', filename=original_file) }}" alt="Original File">
+            {% endif %}
+        </div>
+        {% endif %}
+
+        {% if result_file %}
+        <div class="card">
+            <h3>Detected Image</h3>
+            <img src="{{ url_for('result_file', filename=result_file) }}" alt="Result File">
+        </div>
+        {% elif result_video %}
+        <div class="card">
+            <h3>Processed Video</h3>
+            <video controls>
+                <source src="{{ url_for('result_video', filename=result_video) }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="back-button">
+        <a href="{{ url_for('home') }}">Back to Upload</a>
+    </div>
+</body>
+</html>

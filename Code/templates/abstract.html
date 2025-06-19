@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOLO Video Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(120deg, #f093fb, #f5576c);
+            color: white;
+            text-align: center;
+            padding: 50px;
+            margin-right: 50px; 
+            background-image: url("{{url_for('static', filename='images/av.png')}}"); /* Replace 'background.jpg' with your image path */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Keeps the image fixed while scrolling */
+          
+        
+        }
+        h1 {
+            margin-top: 170px;
+            font-style: italic;
+            font-size: 40px;
+            font-weight: 800;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            margin-top: 100px; 
+            color: rgba(255, 34, 5, 0.8);
+        }   
+        form {
+            /* background: rgb(245, 243, 243); */
+            color: rgba(255, 34, 5, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(255, 34, 5, 0.8);
+            width: 700px;
+            text-align: justify;
+            font-size: larger;
+
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: rgba(255, 34, 5, 0.8);
+            border: none;
+            color: white;
+            font-size: 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-style: italic;
+        }
+        button:hover {
+            background-color: rgba(255, 34, 5, 0.8);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* background-color: rgba(0, 0, 0, 0.7); */
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        .navbar h2 {
+            margin: 0;
+            color: rgba(255, 34, 5, 0.8);
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-style: italic;
+        }
+        .navbar .nav-buttons {
+            display: flex;
+            gap: 15px;
+            margin-right: 100px;
+        }
+        .nav-button {
+            padding: 20px 15px;
+            font-size: 20px;
+            color: white;
+            /* background-color: rgba(241, 48, 0, 0.8); */
+            text-decoration: none;
+            border-radius: 5px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            transition: background-color 0.3s ease;
+            font-style: italic;
+        }
+        span{
+            color: rgba(255, 34, 5, 0.8);
+
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h2>Safety</h2>
+        <div class="nav-buttons">
+            <a href="/" class="nav-button">Home</a>
+            <a href="/about" class="nav-button">About</a>
+        </div>
+    </div>
+    <h1>About Project</h1>
+    <form>
+        <p>This project presents an innovative approach to detecting eye blink completeness using a combination of Long-Term Recurrent Convolutional Networks (LTR-CNNs) and the YOLOv8 model. Traditional methods for blink detection often struggle with the temporal nature and variability of blink sequences in real-world scenarios. To address this challenge, we propose a novel architecture that leverages the strengths of LTR-CNNs to capture long-term dependencies in eye movement patterns and combine it with the YOLOv8 model for real-time detection and classification of eye blinks. The LTR-CNNs enhance the model's ability to interpret complex blink sequences by learning sequential patterns over time, while YOLOv8 excels at localizing and detecting eye blinks accurately in video streams. The proposed system demonstrates significant improvement in accuracy and robustness compared to existing methods, enabling more precise detection of blink completeness and enhancing user experience in applications such as human-computer interaction, driver monitoring, and emotion analysis.</p>
+    </form>
+</body>
+</html>

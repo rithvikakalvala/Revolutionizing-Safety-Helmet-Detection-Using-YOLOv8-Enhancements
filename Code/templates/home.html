@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anchor Button Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+           
+            background-image: url("{{url_for('static', filename='images/av.png')}}"); /* Replace 'background.jpg' with your image path */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Keeps the image fixed while scrolling */
+            color: #fff;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color:rgba(213, 50, 10, 0.8); 
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        .navbar h2 {
+            margin: 0;
+            color: white;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-style: italic;
+        }
+        .navbar .nav-buttons {
+            display: flex;
+            gap: 15px;
+            margin-right: 50px;
+        }
+        .nav-button {
+            padding: 20px 15px;
+            font-size: 20px;
+            color: white;
+            /* background-color: rgba(241, 48, 0, 0.8); */
+            text-decoration: none;
+            border-radius: 5px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            transition: background-color 0.3s ease;
+        }
+ 
+        .anchor-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 25px;
+            color: rgb(244, 242, 242);
+            background-color: rgb(241, 48, 0, 0.8);
+            text-decoration: none;
+            border-radius: 5px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+           
+        }
+        .anchor-button:hover {  
+            background-color: rgb(241, 48, 0, 0.8);
+        }
+        h1 {
+            font-style: italic;
+            font-size: 50px;
+            font-weight: 800;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            margin-top: 200px;
+             /* Adjust margin to account for fixed navbar */
+        }
+        span {
+            color: rgb(241, 48, 0, 0.8);   
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h2>Safety</h2>
+        <div class="nav-buttons">
+            <a href="/" class="nav-button">Home</a>
+            <a href="/about" class="nav-button">About</a>
+        </div>
+    </div>
+    
+
+
+    <h1><span> Safety Helmet Detection</span><br>Based on<br><span>Improved YOLO</span></h1>
+    <a href="/home" class="anchor-button">Start Here..!</a>
+</body>
+</html>
