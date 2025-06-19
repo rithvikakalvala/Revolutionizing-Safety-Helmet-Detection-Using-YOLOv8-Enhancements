@@ -1,0 +1,7 @@
+
+path: C:/Users/verti/Desktop/HELMENT_NEW/abcd.v3i.yolov8
+train: C:/Users/verti/Desktop/HELMENT_NEW/abcd.v3i.yolov8/train
+val: C:/Users/verti/Desktop/HELMENT_NEW/abcd.v3i.yolov8/valid
+
+nc: 2  # Number of classes
+names: ['helmet', 'with out helmet']  # Replace with your class names
